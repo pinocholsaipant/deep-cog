@@ -1,0 +1,17 @@
+{
+	"amount": {
+		"Description": "Monetary dollar amount for the delayed option"
+	},
+	"Delay": {
+		"Description": "Delay (in days) until the receipt of the delayed option"
+	},
+	"choseAccept": {
+		"Description": "1 if participant chose the delayed option. 0 if participant chose the immediate option of $20 now"
+	},
+	"RT": {
+		"Description": "Response Time"
+	},
+	"choseRight": {
+		"Description": "1 if participant pressed the right button. 0 if left."
+	}
+}

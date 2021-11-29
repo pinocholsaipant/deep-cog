@@ -1,0 +1,167 @@
+participant_id	sex	age	Shipley	condition	Education
+sub-dmp0005	Female	28	120	Intervention	College graduate or beyond
+sub-dmp0010	Female	28	112	Intervention	College graduate or beyond
+sub-dmp0011	Male	24	119	Intervention	College graduate or beyond
+sub-dmp0018	Male	30	114	Intervention	Grade school
+sub-dmp0019	Male	30	113	Control	College graduate or beyond
+sub-dmp0032	Male	20	101	Unknown	Some college or technical school
+sub-dmp0034	Female	19	105	Unknown	High school graduate or GED
+sub-dmp0036	Male	27	97	Intervention	High school graduate or GED
+sub-dmp0048	Female	29	112	Intervention	College graduate or beyond
+sub-dmp0060	Male	20	109	Intervention	Some college or technical school
+sub-dmp0062	Female	27	120	Intervention	College graduate or beyond
+sub-dmp0063	Female	23	116	Control	College graduate or beyond
+sub-dmp0090	Male	25	117	Unknown	College graduate or beyond
+sub-dmp0095	Female	24	110	Control	College graduate or beyond
+sub-dmp0097	Female	25	108	Control	College graduate or beyond
+sub-dmp0098	Male	27	113	Control	College graduate or beyond
+sub-dmp0106	Female	25	108	Control	Some college or technical school
+sub-dmp0109	Male	18	112	Control	High school graduate or GED
+sub-dmp0110	Male	23	116	Intervention	Some college or technical school
+sub-dmp0115	Male	24	109	Unknown	College graduate or beyond
+sub-dmp0118	Female	28	106	Control	Some college or technical school
+sub-dmp0140	Male	34	101	Intervention	College graduate or beyond
+sub-dmp0148	Male	21	96	Control	Some college or technical school
+sub-dmp0153	Male	20	109	Unknown	Some high school
+sub-dmp0154	Female	27	111	Intervention	College graduate or beyond
+sub-dmp0157	Female	19	116	Unknown	Some college or technical school
+sub-dmp0169	Female	24	119	Control	College graduate or beyond
+sub-dmp0171	Male	26	117	Intervention	College graduate or beyond
+sub-dmp0183	Male	34	113	Intervention	College graduate or beyond
+sub-dmp0188	Male	21	114	Unknown	Some college or technical school
+sub-dmp0199	Male	23	120	Unknown	College graduate or beyond
+sub-dmp0200	Male	28	110	Control	College graduate or beyond
+sub-dmp0202	Female	18	109	Intervention	High school graduate or GED
+sub-dmp0216	Male	30	116	Unknown	Some college or technical school
+sub-dmp0217	Male	29	109	Control	Some college or technical school
+sub-dmp0219	Female	21	118	Control	Some college or technical school
+sub-dmp0224	Male	22	114	Unknown	College graduate or beyond
+sub-dmp0229	Male	20	108	Unknown	High school graduate or GED
+sub-dmp0259	Male	24	118	Control	Some college or technical school
+sub-dmp0267	Female	25	115	Intervention	College graduate or beyond
+sub-dmp0269	Male	26	118	Intervention	College graduate or beyond
+sub-dmp0273	Female	26	117	Intervention	College graduate or beyond
+sub-dmp0290	Male	20	122	Control	Some college or technical school
+sub-dmp0295	Male	26	115	Unknown	Some college or technical school
+sub-dmp0301	Female	29	118	Intervention	College graduate or beyond
+sub-dmp0305	Male	32	116	Control	Some college or technical school
+sub-dmp0313	Female	33	118	Control	College graduate or beyond
+sub-dmp0330	Female	32	114	Control	College graduate or beyond
+sub-dmp0350	Female	24	109	Intervention	College graduate or beyond
+sub-dmp0356	Male	18	122	Control	Some college or technical school
+sub-dmp0357	Female	28	107	Control	College graduate or beyond
+sub-dmp0381	Male	29	107	Intervention	Grade school
+sub-dmp0389	Male	18	116	Control	High school graduate or GED
+sub-dmp0414	Male	24	101	Control	College graduate or beyond
+sub-dmp0418	Female	18	120	Unknown	High school graduate or GED
+sub-dmp0423	Male	28	114	Unknown	College graduate or beyond
+sub-dmp0442	Male	22	120	Control	Some college or technical school
+sub-dmp0445	Male	18	100	Intervention	Some high school
+sub-dmp0492	Female	21	108	Control	High school graduate or GED
+sub-dmp0498	Male	19	118	Intervention	Some college or technical school
+sub-dmp0502	Male	26	111	Intervention	College graduate or beyond
+sub-dmp0509	Female	22	115	Control	College graduate or beyond
+sub-dmp0510	Female	26	112	Control	College graduate or beyond
+sub-dmp0521	Female	20	101	Control	Some college or technical school
+sub-dmp0523	Female	34	111	Control	College graduate or beyond
+sub-dmp0528	Female	19	125	Control	Some college or technical school
+sub-dmp0556	Male	34	113	Control	College graduate or beyond
+sub-dmp0558	Female	23	110	Intervention	College graduate or beyond
+sub-dmp0559	Male	22	104	Intervention	College graduate or beyond
+sub-dmp0574	Male	27	111	Control	College graduate or beyond
+sub-dmp0587	Male	27	100	Unknown	High school graduate or GED
+sub-dmp0596	Female	18	112	Intervention	Some high school
+sub-dmp0598	Female	27	117	Control	College graduate or beyond
+sub-dmp0614	Male	18	109	Intervention	High school graduate or GED
+sub-dmp0628	Male	23	92	Unknown	Some college or technical school
+sub-dmp0649	Male	31	115	Intervention	College graduate or beyond
+sub-dmp0660	Male	27	110	Control	Some college or technical school
+sub-dmp0678	Male	25	106	Control	College graduate or beyond
+sub-dmp0679	Male	18	116	Unknown	High school graduate or GED
+sub-dmp0700	Male	28	102	Control	College graduate or beyond
+sub-dmp0701	Male	20	122	Intervention	College graduate or beyond
+sub-dmp0715	Female	24	113	Intervention	College graduate or beyond
+sub-dmp0723	Female	24	90	Intervention	College graduate or beyond
+sub-dmp0724	Male	21	91	Control	Some college or technical school
+sub-dmp0730	Female	20	119	Intervention	Some college or technical school
+sub-dmp0755	Male	19	119	Intervention	High school graduate or GED
+sub-dmp0759	Male	31	115	Control	College graduate or beyond
+sub-dmp0760	Male	29	109	Control	College graduate or beyond
+sub-dmp0772	Female	19	112	Control	Some college or technical school
+sub-dmp0773	Male	22	114	Unknown	College graduate or beyond
+sub-dmp0775	Female	30	110	Control	College graduate or beyond
+sub-dmp0777	Female	26	109	Unknown	Some college or technical school
+sub-dmp0782	Male	25	111	Unknown	College graduate or beyond
+sub-dmp0793	Male	23	115	Intervention	College graduate or beyond
+sub-dmp0795	Male	32	100	Control	College graduate or beyond
+sub-dmp0800	Female	18	113	Control	Some college or technical school
+sub-dmp0801	Male	28	107	Control	Some college or technical school
+sub-dmp0808	Male	18	103	Control	High school graduate or GED
+sub-dmp0812	Female	30	100	Intervention	Some college or technical school
+sub-dmp0813	Male	24	97	Intervention	College graduate or beyond
+sub-dmp0815	Female	21	112	Intervention	College graduate or beyond
+sub-dmp0821	Male	22	124	Intervention	College graduate or beyond
+sub-dmp0844	Male	33	112	Intervention	Some college or technical school
+sub-dmp0847	Male	21	108	Intervention	High school graduate or GED
+sub-dmp0848	Male	28	110	Intervention	College graduate or beyond
+sub-dmp0859	Female	24	116	Control	College graduate or beyond
+sub-dmp0870	Male	20	114	Unknown	Some college or technical school
+sub-dmp0877	Male	18	118	Unknown	Some college or technical school
+sub-dmp0889	Female	23	105	Unknown	Some college or technical school
+sub-dmp0897	Female	21	108	Intervention	Some college or technical school
+sub-dmp0909	Male	26	117	Intervention	High school graduate or GED
+sub-dmp0912	Male	21	110	Unknown	College graduate or beyond
+sub-dmp0913	Male	19	116	Unknown	High school graduate or GED
+sub-dmp0919	Female	20	114	Intervention	Some college or technical school
+sub-dmp0922	Female	24	94	Unknown	Some college or technical school
+sub-dmp0928	Female	23	115	Unknown	College graduate or beyond
+sub-dmp0929	Female	23	110	Control	College graduate or beyond
+sub-dmp0937	Female	34	117	Control	College graduate or beyond
+sub-dmp0939	Female	20	105	Intervention	High school graduate or GED
+sub-dmp0952	Female	30	109	Unknown	College graduate or beyond
+sub-dmp0954	Female	21	107	Intervention	Some college or technical school
+sub-dmp0969	Male	28	115	Intervention	College graduate or beyond
+sub-dmp0971	Male	27	110	Control	College graduate or beyond
+sub-dmp0975	Male	27	109	Unknown	Some college or technical school
+sub-dmp0978	Male	28	109	Control	College graduate or beyond
+sub-dmp0982	Male	18	113	Unknown	Some high school
+sub-dmp0985	Male	21	110	Intervention	Some college or technical school
+sub-dmp0996	Male	28	95	Unknown	College graduate or beyond
+sub-dmp1000	Male	30	120	Intervention	College graduate or beyond
+sub-dmp1001	Female	22	114	Unknown	Some college or technical school
+sub-dmp1003	Male	32	114	Intervention	College graduate or beyond
+sub-dmp1006	Male	23	110	Intervention	College graduate or beyond
+sub-dmp1028	Female	23	109	Unknown	College graduate or beyond
+sub-dmp1032	Female	23	110	Control	College graduate or beyond
+sub-dmp1037	Male	31	105	Control	College graduate or beyond
+sub-dmp1039	Female	18	107	Control	Some college or technical school
+sub-dmp1052	Female	29	116	Intervention	College graduate or beyond
+sub-dmp1057	Male	26	104	Intervention	College graduate or beyond
+sub-dmp1062	Female	28	110	Control	College graduate or beyond
+sub-dmp1064	Male	22	114	Intervention	College graduate or beyond
+sub-dmp1070	Female	31	93	Control	College graduate or beyond
+sub-dmp1083	Female	19	111	Intervention	Some college or technical school
+sub-dmp1090	Female	27	115	Intervention	High school graduate or GED
+sub-dmp1095	Male	29	107	Control	College graduate or beyond
+sub-dmp1100	Male	34	103	Control	College graduate or beyond
+sub-dmp1114	Male	23	123	Control	College graduate or beyond
+sub-dmp1135	Male	26	113	Intervention	College graduate or beyond
+sub-dmp1157	Male	22	114	Unknown	High school graduate or GED
+sub-dmp1165	Male	28	104	Intervention	College graduate or beyond
+sub-dmp1172	Male	19	110	Intervention	High school graduate or GED
+sub-dmp1183	Female	29	112	Intervention	College graduate or beyond
+sub-dmp1192	Male	19	106	Control	Some college or technical school
+sub-dmp1205	Female	27	115	Intervention	College graduate or beyond
+sub-dmp1221	Male	20	98	Intervention	Some college or technical school
+sub-dmp1225	Male	18	117	Control	High school graduate or GED
+sub-dmp1226	Male	19	112	Unknown	Some high school
+sub-dmp1227	Male	25	97	Unknown	College graduate or beyond
+sub-dmp1231	Female	22	107	Control	College graduate or beyond
+sub-dmp1241	Female	25	112	Control	College graduate or beyond
+sub-dmp1243	Female	19	119	Unknown	Some college or technical school
+sub-dmp1248	Female	19	102	Intervention	Some college or technical school
+sub-dmp1252	Male	22	109	Unknown	Some college or technical school
+sub-dmp1260	Female	33	100	Control	High school graduate or GED
+sub-dmp1266	Male	25	98	Intervention	College graduate or beyond
+sub-dmp1271	Male	29	105	Control	College graduate or beyond
+sub-dmp1291	Male	26	113	Control	Some college or technical school
