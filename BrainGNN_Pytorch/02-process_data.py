@@ -62,32 +62,33 @@ def main():
     atlas = args.atlas  # Atlas for network construction (node definition)
 
     # Get subject IDs and class labels
-    subject_IDs = Reader.get_ids()
-    labels = Reader.get_subject_score(subject_IDs, score='DX_GROUP')
+    # subject_IDs = Reader.get_ids()
+    labels = Reader.get_labels()
 
     # Number of subjects and classes for binary classification
     num_classes = args.nclass
-    num_subjects = len(subject_IDs)
+    num_subjects = len(labels) # len(subject_IDs)
     params['n_subjects'] = num_subjects
 
     # Initialise variables for class labels and acquisition sites
-    # 1 is autism, 2 is control
+    # 0 is itc, 1 is risk
     y_data = np.zeros([num_subjects, num_classes]) # n x 2
     y = np.zeros([num_subjects, 1]) # n x 1
 
     # Get class labels for all subjects
     for i in range(num_subjects):
-        y_data[i, int(labels[subject_IDs[i]]) - 1] = 1
-        y[i] = int(labels[subject_IDs[i]])
+        y_data[i, int(labels[i])] = 1
+        y[i] = int(labels[i])
 
     # Compute feature vectors (vectorised connectivity networks)
-    fea_corr = Reader.get_networks(subject_IDs, iter_no='', kind='correlation', atlas_name=atlas) #(1035, 200, 200)
-    fea_pcorr = Reader.get_networks(subject_IDs, iter_no='', kind='partial correlation', atlas_name=atlas) #(1035, 200, 200)
+    # fea_corr = Reader.get_networks('correlation')
+    fea_pcorr = Reader.get_networks('partial_correlation')
+    # fea_pcorr = Reader.get_networks('matrices')
 
     if not os.path.exists(os.path.join(data_folder,'raw')):
         os.makedirs(os.path.join(data_folder,'raw'))
     for i, subject in enumerate(subject_IDs):
-        dd.io.save(os.path.join(data_folder,'raw',subject+'.h5'),{'corr':fea_corr[i],'pcorr':fea_pcorr[i],'label':y[i]%2})
+        dd.io.save(os.path.join(data_folder,'raw',subject+'.h5'),{'corr':fea_corr[i],'label':y[i]%2})
 
 if __name__ == '__main__':
     main()

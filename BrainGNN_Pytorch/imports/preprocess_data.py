@@ -37,8 +37,8 @@ warnings.filterwarnings("ignore")
 # Input data variables
 
 # root_folder = '/home/azureuser/projects/BrainGNN/data/'
-root_folder = '/data/notebook_files/BrainGNN_Pytorch/data/' #pino edit
-data_folder = os.path.join(root_folder, 'ABIDE_pcp/cpac/filt_noglobal')
+root_folder = '/data/workspace_files/deep-cog/'
+data_folder = os.path.join(root_folder, 'preprocessed/')
 phenotype = os.path.join(root_folder, 'ABIDE_pcp/Phenotypic_V1_0b_preprocessed1.csv')
 
 
@@ -230,36 +230,30 @@ def phenotype_ft_vector(pheno_ft, num_subjects, params):
 
     return phenotype_ft
 
+# Load labels into numpy array
+def get_labels():
+    labels_file = os.path.join(data_folder, 'labels.csv')
+    return np.loadtxt(labels_file, delimiter='\n')
+
 
 # Load precomputed fMRI connectivity networks
-def get_networks(subject_list, kind, iter_no='', seed=1234, n_subjects='', atlas_name="aal",
-                 variable='connectivity'):
+def get_networks(kind):
     """
-        subject_list : list of subject IDs
-        kind         : the kind of connectivity to be used, e.g. lasso, partial correlation, correlation
-        atlas_name   : name of the parcellation atlas used
-        variable     : variable name in the .mat file that has been used to save the precomputed networks
+        kind         : partial_correlation or correlation
     return:
         matrix      : feature matrix of connectivity networks (num_subjects x network_size)
     """
 
     all_networks = []
-    for subject in subject_list:
-        if len(kind.split()) == 2:
-            kind = '_'.join(kind.split())
-        fl = os.path.join(data_folder, subject,
-                              subject + "_" + atlas_name + "_" + kind.replace(' ', '_') + ".mat")
-
-
-        matrix = sio.loadmat(fl)[variable]
+    
+    matrices_folder = os.path.join(data_folder, kind)
+    for matrix_csv in os.listdir(matrices_folder):
+        fl = os.path.join(matrices_folder, matrix_csv)
+        print("fl =", fl)
+        matrix = np.loadtxt(fl, delimiter=',')
         all_networks.append(matrix)
 
-    if kind in ['TE', 'TPE']:
-        norm_networks = [mat for mat in all_networks]
-    else:
-        norm_networks = [np.arctanh(mat) for mat in all_networks]
-
-    networks = np.stack(norm_networks)
+    networks = np.stack(all_networks)
 
     return networks
 
