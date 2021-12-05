@@ -37,7 +37,7 @@ warnings.filterwarnings("ignore")
 # Input data variables
 
 # root_folder = '/home/azureuser/projects/BrainGNN/data/'
-root_folder = '..'
+root_folder = '/Users/julianquevedo/code/deep-cog/'
 data_folder = os.path.join(root_folder, 'preprocessed/')
 phenotype = os.path.join(root_folder, 'ABIDE_pcp/Phenotypic_V1_0b_preprocessed1.csv')
 

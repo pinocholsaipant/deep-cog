@@ -20,6 +20,7 @@ class ABIDEDataset(InMemoryDataset):
         onlyfiles = [f for f in listdir(data_dir) if osp.isfile(osp.join(data_dir, f))]
         onlyfiles.sort()
         return onlyfiles
+
     @property
     def processed_file_names(self):
         return  'data.pt'
