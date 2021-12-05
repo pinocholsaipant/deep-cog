@@ -25,8 +25,9 @@ import os
 
 warnings.filterwarnings("ignore")
 # root_folder = '/home/azureuser/projects/BrainGNN/data/'
-root_folder = '/data/notebook_files/BrainGNN_Pytorch/data/' #pino edit
-data_folder = os.path.join(root_folder, 'ABIDE_pcp/cpac/filt_noglobal/')
+# root_folder = '/data/notebook_files/BrainGNN_Pytorch/data/' #pino edit
+root_folder = '..'
+data_folder = os.path.join(root_folder, 'preprocessed/')
 
 # Process boolean command line arguments
 def str2bool(v):
@@ -81,14 +82,13 @@ def main():
         y[i] = int(labels[i])
 
     # Compute feature vectors (vectorised connectivity networks)
-    # fea_corr = Reader.get_networks('correlation')
+    fea_corr = Reader.get_networks('correlation')
     fea_pcorr = Reader.get_networks('partial_correlation')
-    # fea_pcorr = Reader.get_networks('matrices')
 
     if not os.path.exists(os.path.join(data_folder,'raw')):
         os.makedirs(os.path.join(data_folder,'raw'))
-    for i, subject in enumerate(subject_IDs):
-        dd.io.save(os.path.join(data_folder,'raw',subject+'.h5'),{'corr':fea_corr[i],'label':y[i]%2})
+    for i in range(num_subjects):
+        dd.io.save(os.path.join(data_folder,'raw','%d.h5' % i),{'corr': fea_corr[i], 'pcorr': fea_pcorr[i],'label': y[i]})
 
 if __name__ == '__main__':
     main()

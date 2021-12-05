@@ -5,6 +5,7 @@ import time
 import copy
 
 import torch
+# from torch.functional import Tensor
 import torch.nn.functional as F
 from torch.optim import lr_scheduler
 from tensorboardX import SummaryWriter
@@ -20,12 +21,12 @@ torch.manual_seed(123)
 EPS = 1e-10
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
+ROI_COUNT = 39 # number of ROIs
 parser = argparse.ArgumentParser()
 parser.add_argument('--epoch', type=int, default=0, help='starting epoch')
 parser.add_argument('--n_epochs', type=int, default=100, help='number of epochs of training')
 parser.add_argument('--batchSize', type=int, default=100, help='size of the batches')
-parser.add_argument('--dataroot', type=str, default='/data/notebook_files/BrainGNN_Pytorch/data/ABIDE_pcp/cpac/filt_noglobal', help='root directory of the dataset')
+parser.add_argument('--dataroot', type=str, default='/Users/julianquevedo/code/deep-cog/preprocessed/', help='root directory of the dataset')
 parser.add_argument('--fold', type=int, default=0, help='training which fold')
 parser.add_argument('--lr', type = float, default=0.01, help='learning rate')
 parser.add_argument('--stepsize', type=int, default=20, help='scheduler step size')
@@ -39,7 +40,7 @@ parser.add_argument('--lamb4', type=float, default=0.1, help='s2 entropy regular
 parser.add_argument('--lamb5', type=float, default=0, help='s1 consistence regularization')
 parser.add_argument('--layer', type=int, default=2, help='number of GNN layers')
 parser.add_argument('--ratio', type=float, default=0.5, help='pooling ratio')
-parser.add_argument('--indim', type=int, default=200, help='feature dim')
+parser.add_argument('--indim', type=int, default=ROI_COUNT, help='feature dim')
 parser.add_argument('--nroi', type=int, default=200, help='num of ROIs')
 parser.add_argument('--nclass', type=int, default=2, help='num of classes')
 parser.add_argument('--load_model', type=bool, default=False)
@@ -68,11 +69,21 @@ writer = SummaryWriter(os.path.join('./log',str(fold)))
 dataset = ABIDEDataset(path,name)
 dataset.data.y = dataset.data.y.squeeze()
 dataset.data.x[dataset.data.x == float('inf')] = 0
+print("dataset.data.y.shape:", dataset.data.y.shape)
+print("dataset.data.y:", dataset.data.y)
+print("dataset[0].y.shape:", dataset[0].y.shape)
+print("dataset[0].y:", dataset[0].y)
+print("dataset.data.x.shape:", dataset.data.x.shape)
+print("dataset[0].x.shape:", dataset[0].x.shape)
+print("dataset[0]x:", dataset[0].x)
 
 tr_index,val_index,te_index = train_val_test_split(fold=fold)
-train_mask = torch.zeros(len(dataset), dtype=torch.uint8)
-val_mask = torch.zeros(len(dataset), dtype=torch.uint8)
-test_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+# train_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+# val_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+# test_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+train_mask = np.zeros(len(dataset), dtype=int)
+val_mask = np.zeros(len(dataset), dtype=int)
+test_mask = np.zeros(len(dataset), dtype=int)
 train_mask[tr_index] = 1
 val_mask[val_index] = 1
 test_mask[te_index] = 1
@@ -81,14 +92,14 @@ val_dataset = dataset[val_mask]
 test_dataset = dataset[test_mask]
 
 
-train_loader = DataLoader(train_dataset,batch_size=opt.batchSize, shuffle= True)
+train_loader = DataLoader(train_dataset, batch_size=opt.batchSize, shuffle= True)
 val_loader = DataLoader(val_dataset, batch_size=opt.batchSize, shuffle=False)
 test_loader = DataLoader(test_dataset, batch_size=opt.batchSize, shuffle=False)
 
 
 
 ############### Define Graph Deep Learning Network ##########################
-model = Network(opt.indim,opt.ratio,opt.nclass).to(device)
+model = Network(opt.indim,opt.ratio,opt.nclass, R=opt.indim).to(device)
 print(model)
 
 if opt_method == 'Adam':
@@ -234,7 +245,7 @@ for epoch in range(0, num_epoch):
 #######################################################################################
 
 if opt.load_model:
-    model = Network(opt.indim,opt.ratio,opt.nclass).to(device)
+    model = Network(opt.indim,opt.ratio,opt.nclass, R=opt.indim).to(device)
     model.load_state_dict(torch.load(os.path.join(opt.save_path,str(fold)+'.pth')))
     model.eval()
     preds = []

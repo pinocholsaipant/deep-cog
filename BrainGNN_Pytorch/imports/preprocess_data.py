@@ -37,7 +37,7 @@ warnings.filterwarnings("ignore")
 # Input data variables
 
 # root_folder = '/home/azureuser/projects/BrainGNN/data/'
-root_folder = '/data/workspace_files/deep-cog/'
+root_folder = '..'
 data_folder = os.path.join(root_folder, 'preprocessed/')
 phenotype = os.path.join(root_folder, 'ABIDE_pcp/Phenotypic_V1_0b_preprocessed1.csv')
 
@@ -247,11 +247,12 @@ def get_networks(kind):
     all_networks = []
     
     matrices_folder = os.path.join(data_folder, kind)
-    for matrix_csv in os.listdir(matrices_folder):
-        fl = os.path.join(matrices_folder, matrix_csv)
-        print("fl =", fl)
-        matrix = np.loadtxt(fl, delimiter=',')
-        all_networks.append(matrix)
+    for entry in os.listdir(matrices_folder):
+        if '.csv' in entry:
+            fl = os.path.join(matrices_folder, entry)
+            # print("fl =", fl)
+            matrix = np.loadtxt(fl, delimiter=',')
+            all_networks.append(matrix)
 
     networks = np.stack(all_networks)
 

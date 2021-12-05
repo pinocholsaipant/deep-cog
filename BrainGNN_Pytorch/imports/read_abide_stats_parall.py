@@ -78,25 +78,29 @@ def read_data(data_dir):
     edge_att_list, edge_index_list,att_list = [], [], []
 
     # parallar computing
-    cores = multiprocessing.cpu_count()
-    pool = multiprocessing.Pool(processes=cores)
-    #pool =  MyPool(processes = cores)
-    func = partial(read_sigle_data, data_dir)
+    # cores = multiprocessing.cpu_count()
+    # pool = multiprocessing.Pool(processes=cores)
+    # #pool =  MyPool(processes = cores)
+    # func = partial(read_sigle_data, data_dir)
 
-    import timeit
+    # import timeit
 
-    start = timeit.default_timer()
+    # start = timeit.default_timer()
 
-    res = pool.map(func, onlyfiles)
+    # res = pool.map(func, onlyfiles)
 
-    pool.close()
-    pool.join()
+    # pool.close()
+    # pool.join()
 
-    stop = timeit.default_timer()
+    # stop = timeit.default_timer()
 
-    print('Time: ', stop - start)
+    # print('Time: ', stop - start)
 
-
+    # instead of using parallel computing just loop 
+    # over all data files in the 'raw' directory
+    res = []
+    for file in onlyfiles:
+        res.append(read_sigle_data(data_dir, file))
 
     for j in range(len(res)):
         edge_att_list.append(res[j][0])
