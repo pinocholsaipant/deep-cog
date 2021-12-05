@@ -141,16 +141,15 @@ def train(epoch):
     s2_list = []
     loss_all = 0
     step = 0
-    for batch_num, data in enumerate(train_loader):
+    for data in train_loader:
         data = data.to(device)
         optimizer.zero_grad()
         output, w1, w2, s1, s2 = model(data.x, data.edge_index, data.batch, data.edge_attr, data.pos)
         s1_list.append(s1.view(-1).detach().cpu().numpy())
         s2_list.append(s2.view(-1).detach().cpu().numpy())
 
-        # if batch_num == 0:
-        #     print("batch_num:", batch_num)
-        #     print("data.y[0]:", data.y[0].item(), "output[0]:", output[0][0].item(), output[0][1].item())
+        print("labels:")
+        print(data.y)
 
         loss_c = F.nll_loss(output, data.y)
 
