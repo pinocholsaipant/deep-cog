@@ -20,13 +20,14 @@ torch.manual_seed(123)
 
 EPS = 1e-10
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("device:", device)
 
 ROI_COUNT = 39 # number of ROIs
 parser = argparse.ArgumentParser()
 parser.add_argument('--epoch', type=int, default=0, help='starting epoch')
 parser.add_argument('--n_epochs', type=int, default=100, help='number of epochs of training')
 parser.add_argument('--batchSize', type=int, default=100, help='size of the batches')
-parser.add_argument('--dataroot', type=str, default='/Users/julianquevedo/code/deep-cog/preprocessed/', help='root directory of the dataset')
+parser.add_argument('--dataroot', type=str, default='../preprocessed/', help='root directory of the dataset')
 parser.add_argument('--fold', type=int, default=0, help='training which fold')
 parser.add_argument('--lr', type = float, default=0.01, help='learning rate')
 parser.add_argument('--stepsize', type=int, default=20, help='scheduler step size')
@@ -63,25 +64,37 @@ fold = opt.fold
 writer = SummaryWriter(os.path.join('./log',str(fold)))
 
 
-
 ################## Define Dataloader ##################################
 
 dataset = ABIDEDataset(path,name)
 dataset.data.y = dataset.data.y.squeeze()
 dataset.data.x[dataset.data.x == float('inf')] = 0
-tr_index,val_index,te_index = train_val_test_split(fold=fold)
-# train_mask = torch.zeros(len(dataset), dtype=torch.uint8)
-# val_mask = torch.zeros(len(dataset), dtype=torch.uint8)
-# test_mask = torch.zeros(len(dataset), dtype=torch.uint8)
-train_mask = np.zeros(len(dataset), dtype=int)
-val_mask = np.zeros(len(dataset), dtype=int)
-test_mask = np.zeros(len(dataset), dtype=int)
-train_mask[tr_index] = 1
-val_mask[val_index] = 1
-test_mask[te_index] = 1
-train_dataset = dataset[train_mask]
-val_dataset = dataset[val_mask]
-test_dataset = dataset[test_mask]
+
+torch.set_printoptions(threshold=10_000)
+
+
+dataset = dataset.shuffle()
+
+train_end = int(len(dataset) * 0.7)
+test_end = int(len(dataset) * 0.2) + train_end
+
+train_dataset = dataset[:train_end]
+val_dataset = dataset[test_end:]
+test_dataset = dataset[train_end:test_end]
+
+# tr_index,val_index,te_index = train_val_test_split(fold=fold)
+# # train_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+# # val_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+# # test_mask = torch.zeros(len(dataset), dtype=torch.uint8)
+# train_mask = np.zeros(len(dataset), dtype=int)
+# val_mask = np.zeros(len(dataset), dtype=int)
+# test_mask = np.zeros(len(dataset), dtype=int)
+# train_mask[tr_index] = 1
+# val_mask[val_index] = 1
+# test_mask[te_index] = 1
+# train_dataset = dataset[train_mask]
+# val_dataset = dataset[val_mask]
+# test_dataset = dataset[test_mask]
 
 
 train_loader = DataLoader(train_dataset, batch_size=opt.batchSize, shuffle= True)
@@ -140,8 +153,10 @@ def train(epoch):
         s1_list.append(s1.view(-1).detach().cpu().numpy())
         s2_list.append(s2.view(-1).detach().cpu().numpy())
 
-        print("labels:")
-        print(data.y)
+        # print("pred:")
+        # print(torch.argmax(output, dim=1))
+        # print("data.y:")
+        # print(data.y)
 
         loss_c = F.nll_loss(output, data.y)
 
@@ -177,12 +192,18 @@ def test_acc(loader):
     correct = 0
     for data in loader:
         data = data.to(device)
+        print("data.x:")
+        print(data.x.shape)
+        print(data.x)
         outputs= model(data.x, data.edge_index, data.batch, data.edge_attr,data.pos)
         pred = outputs[0].max(dim=1)[1]
-        # print("pred:")
-        # print(pred)
-        # print("data.y:")
-        # print(data.y)
+
+        print("scores:")
+        print(outputs[0])
+        print("pred:")
+        print(pred)
+        print("data.y:")
+        print(data.y)
         correct += pred.eq(data.y).sum().item()
 
     return correct / len(loader.dataset)

@@ -36,7 +36,7 @@ class MyNNConv(MyMessagePassing):
         edge_weight = edge_weight.squeeze()
         if size is None and torch.is_tensor(x):
             edge_index, edge_weight = add_remaining_self_loops(
-                edge_index, edge_weight, 1, x.size(0))
+                edge_index, edge_weight, 1.0, x.size(0))
 
         weight = self.nn(pseudo).view(-1, self.in_channels, self.out_channels)
         if torch.is_tensor(x):

@@ -26,7 +26,7 @@ import os
 warnings.filterwarnings("ignore")
 # root_folder = '/home/azureuser/projects/BrainGNN/data/'
 # root_folder = '/data/notebook_files/BrainGNN_Pytorch/data/' #pino edit
-root_folder = '/Users/julianquevedo/code/deep-cog/'
+root_folder = '../'
 data_folder = os.path.join(root_folder, 'preprocessed/')
 
 # Process boolean command line arguments

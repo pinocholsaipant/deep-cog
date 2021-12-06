@@ -70,6 +70,7 @@ class Network(torch.nn.Module):
         x = F.dropout(x, p=0.5, training=self.training)
         x = self.bn2(F.relu(self.fc2(x)))
         x= F.dropout(x, p=0.5, training=self.training)
+        print(self.fc3(x))
         x = F.log_softmax(self.fc3(x), dim=-1)
 
         return x,self.pool1.weight,self.pool2.weight, torch.sigmoid(score1).view(x.size(0),-1), torch.sigmoid(score2).view(x.size(0),-1)

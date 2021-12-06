@@ -12,6 +12,7 @@ class ABIDEDataset(InMemoryDataset):
         self.root = root
         self.name = name
         super(ABIDEDataset, self).__init__(root,transform, pre_transform)
+        self.process()
         self.data, self.slices = torch.load(self.processed_paths[0])
 
     @property
